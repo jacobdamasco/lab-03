@@ -33,24 +33,50 @@ def send_mail(recipient: str, sender: str, subject: str, body: str) -> bool:
 
 def get_inbox(recipient: str) -> None:
     """TODO: fill out this docstring (using the send_mail docstring as a guide)
+    Gets the inbox using a GET request to the /mail endpoint.
+
+    Args:
+        recipient (str): The recipient of the mail
+    
+    Returns: None
     """
     response = requests.get(f'{SERVER}/mail/inbox/{recipient}')
     pprint.pprint(response.json())
 
 def get_sent(sender: str) -> None:
     """TODO: fill out this docstring (using the send_mail docstring as a guide)
+    Gets the sender using a GET request to the /mail/sent/sender endpoint.
+
+    Args:
+        sender (str): The sender of the mail
+    
+    Returns: None
     """
     response = requests.get(f'{SERVER}/mail/sent/{sender}')
     pprint.pprint(response.json())
 
 def get_mail(mail_id: str) -> None:
     """TODO: fill out this docstring (using the send_mail docstring as a guide)
+    Gets the mail given the mail_id for a mail using a GET request to 
+    the mail/mail_id endpoint.
+
+    Args:
+        mail_id (str): The mail_id of a mail
+    
+    Returns: None
     """
     response = requests.get(f'{SERVER}/mail/{mail_id}')
     pprint.pprint(response.json())
 
 def delete_mail(mail_id: str) -> None:
     """TODO: fill out this docstring (using the send_mail docstring as a guide)
+    Deletes a mail at the endpoint /mail/mail_id where mail_id corresponds to 
+    a specific mail object.
+
+    Args:
+        mail_id (str): The mail_id of a mail
+    
+    Returns: None
     """
     response = requests.delete(f'{SERVER}/mail/{mail_id}')
     pprint.pprint(response.json())
